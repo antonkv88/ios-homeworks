@@ -18,17 +18,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
-        let userLent = UINavigationController()
-        userLent.view.backgroundColor = .gray
+        let userLent = FeedViewController()
+        let userLentTab = UINavigationController(rootViewController: userLent)
         
-        let userProfile = UINavigationController()
-        userProfile.view.backgroundColor = .red
+        let userProfile = ProfileViewController()
+        let userProfileTab = UINavigationController(rootViewController: userProfile)
         
         let tabBarController = UITabBarController()
-        
-        userLent.tabBarItem = UITabBarItem(title: "Лента", image: #imageLiteral(resourceName: "lent"), tag: 0)
-        userProfile.tabBarItem = UITabBarItem(title: "Профиль", image: #imageLiteral(resourceName: "prof"), tag: 1)
-        tabBarController.viewControllers = [userLent, userProfile]
+        userLentTab.tabBarItem = UITabBarItem(title: "Лента", image: #imageLiteral(resourceName: "lent"), tag: 0)
+        userProfileTab.tabBarItem = UITabBarItem(title: "Профиль", image: #imageLiteral(resourceName: "prof"), tag: 1)
+        tabBarController.viewControllers = [userLentTab, userProfileTab]
         tabBarController.selectedIndex = 0
         
         self.window?.rootViewController = tabBarController
