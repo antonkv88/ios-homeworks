@@ -12,10 +12,28 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        
+        let userLent = UINavigationController()
+        userLent.view.backgroundColor = .gray
+        
+        let userProfile = UINavigationController()
+        userProfile.view.backgroundColor = .red
+        
+        let tabBarController = UITabBarController()
+        
+        userLent.tabBarItem = UITabBarItem(title: "Лента", image: #imageLiteral(resourceName: "lent"), tag: 0)
+        userProfile.tabBarItem = UITabBarItem(title: "Профиль", image: #imageLiteral(resourceName: "prof"), tag: 1)
+        tabBarController.viewControllers = [userLent, userProfile]
+        tabBarController.selectedIndex = 0
+        
+        self.window?.rootViewController = tabBarController
+        self.window?.makeKeyAndVisible()
+        
         return true
     }
 
