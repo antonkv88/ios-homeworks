@@ -1,20 +1,23 @@
-//
-//  PostViewController.swift
-//  navigation
-//
-//  Created by Антон Козлов on 16.04.2023.
-//  Copyright © 2023 Антон Козлов. All rights reserved.
-//
-
 import UIKit
 
 class PostViewController: UIViewController {
-
+    var post : Post?
+    
+    private var btnInfo : UIBarButtonItem {
+        let button = UIBarButtonItem(image: #imageLiteral(resourceName: "info"), style: .plain, target: self, action: #selector(btnPressed(_:)))
+        return button
+    }
+    
+    @objc func btnPressed(_ sender : UIBarButtonItem){
+        let infoUI = InfoViewController()
+        present(infoUI, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Пост"
-        view.backgroundColor = .yellow
-
+        title = post?.title
+        view.backgroundColor = .white
+        self.navigationItem.rightBarButtonItem = btnInfo
     }
 
     override func didReceiveMemoryWarning() {

@@ -1,11 +1,3 @@
-//
-//  FeedViewController.swift
-//  navigation
-//
-//  Created by Антон Козлов on 16.04.2023.
-//  Copyright © 2023 Антон Козлов. All rights reserved.
-//
-
 import UIKit
 
 class FeedViewController: UIViewController {
@@ -19,16 +11,17 @@ class FeedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .blue
+        view.backgroundColor = .white
+        title = "Лента"
         view.addSubview(actionBtn)
         actionBtn.addTarget(self, action: #selector(btnPressed(_:)), for: .touchUpInside)
     }
     
     @objc func btnPressed(_ sender: UIButton){
+        let post = Post(title: "Супер-пупер новость")
         let postUI = PostViewController()
-        postUI.modalTransitionStyle = .coverVertical
-        postUI.modalPresentationStyle = .fullScreen
-        present(postUI,animated: true)
+        postUI.post = post
+        self.navigationController?.pushViewController(postUI, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
