@@ -14,10 +14,9 @@
 		FB319A7F29EC2C9400A791BF /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB319A7E29EC2C9400A791BF /* FeedViewController.swift */; };
 		FB319A8129EC2CC500A791BF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB319A8029EC2CC500A791BF /* ProfileViewController.swift */; };
 		FB319A8329EC304100A791BF /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB319A8229EC304100A791BF /* PostViewController.swift */; };
-		FB319A8529EC7C6000A791BF /* structures.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB319A8429EC7C6000A791BF /* structures.swift */; };
+		FB319A8529EC7C6000A791BF /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB319A8429EC7C6000A791BF /* Post.swift */; };
 		FB319A8729EDC13100A791BF /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB319A8629EDC13100A791BF /* InfoViewController.swift */; };
 		FB66036829F1D9B900459B17 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB66036729F1D9B900459B17 /* ProfileHeaderView.swift */; };
-		FBCEECC829F40015000B9BC7 /* test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBCEECC729F40015000B9BC7 /* test.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,10 +29,9 @@
 		FB319A7E29EC2C9400A791BF /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		FB319A8029EC2CC500A791BF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FB319A8229EC304100A791BF /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
-		FB319A8429EC7C6000A791BF /* structures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = structures.swift; sourceTree = "<group>"; };
+		FB319A8429EC7C6000A791BF /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		FB319A8629EDC13100A791BF /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		FB66036729F1D9B900459B17 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
-		FBCEECC729F40015000B9BC7 /* test.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = test.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +65,6 @@
 			isa = PBXGroup;
 			children = (
 				FB1CC12A29EAC9D300389D43 /* AppDelegate.swift */,
-				FBCEECC729F40015000B9BC7 /* test.storyboard */,
 				FB319A8229EC304100A791BF /* PostViewController.swift */,
 				FB319A8629EDC13100A791BF /* InfoViewController.swift */,
 				FB66036629F1D89A00459B17 /* Profile */,
@@ -76,7 +73,7 @@
 				FB1CC13329EAC9D500389D43 /* LaunchScreen.storyboard */,
 				FB1CC13629EAC9D500389D43 /* Info.plist */,
 				FB1CC13C29EACB6A00389D43 /* .gitignore */,
-				FB319A8429EC7C6000A791BF /* structures.swift */,
+				FB319A8429EC7C6000A791BF /* Post.swift */,
 			);
 			path = navigation;
 			sourceTree = "<group>";
@@ -150,7 +147,6 @@
 			files = (
 				FB1CC13D29EACB6A00389D43 /* .gitignore in Resources */,
 				FB1CC13529EAC9D500389D43 /* LaunchScreen.storyboard in Resources */,
-				FBCEECC829F40015000B9BC7 /* test.storyboard in Resources */,
 				FB1CC13229EAC9D500389D43 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -162,7 +158,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB319A8529EC7C6000A791BF /* structures.swift in Sources */,
+				FB319A8529EC7C6000A791BF /* Post.swift in Sources */,
 				FB319A8329EC304100A791BF /* PostViewController.swift in Sources */,
 				FB319A7F29EC2C9400A791BF /* FeedViewController.swift in Sources */,
 				FB319A8129EC2CC500A791BF /* ProfileViewController.swift in Sources */,

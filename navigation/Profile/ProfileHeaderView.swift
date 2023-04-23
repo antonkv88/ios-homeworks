@@ -2,12 +2,41 @@ import UIKit
 
 class ProfileHeaderView: UIView {
     
-    var imageProfile : UIImageView?
-    var labelProfileName : UILabel?
-    var labelStatus : UILabel?
-    var button : UIButton?
+    lazy var profileImage = uiImage
+    lazy var button = uiButton
+    lazy var profileLabel = uiLabelProfile
+    lazy var statusLabel = uiLabelStatus
     
-    func createButton() -> UIButton {
+    var uiImage : UIImageView {
+        let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 120, height: 120))
+        image.image = #imageLiteral(resourceName: "hipsterDog")
+        image.layer.borderWidth = 3
+        image.clipsToBounds = true
+        image.layer.borderColor = UIColor.white.cgColor
+        image.layer.cornerRadius = image.frame.height/2
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }
+    
+    var uiLabelProfile : UILabel {
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 120, height: 120))
+        label.text = "Hipster Dog"
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }
+    
+    var uiLabelStatus : UILabel {
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 120, height: 120))
+        label.text = "Waiting to something..."
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }
+    
+    var uiButton : UIButton {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
         button.backgroundColor = .blue
         button.setTitle("Show status", for: .normal)
@@ -17,78 +46,48 @@ class ProfileHeaderView: UIView {
         button.layer.shadowOpacity = 0.7;
         button.layer.shadowRadius = 4;
         button.layer.shadowOffset = CGSize(width: 4, height: 4);
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(buttonPressed), for : UIControlEvents.touchUpInside)
         return button
     }
-
-    func createImage(_ picture : UIImage) -> UIImageView {
-        let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 120, height: 120))
-        image.image = picture
-        image.layer.borderWidth = 3
-        image.clipsToBounds = true
-        image.layer.borderColor = UIColor.white.cgColor
-        image.layer.cornerRadius = image.frame.height/2
-        return image
+    
+    @objc func buttonPressed(){
+        print(statusLabel.text!)
     }
     
-    func createLabel(_ profileName : String, color textColor : UIColor, fontSize size : CGFloat, textStyle style : UIFont.Weight) -> UILabel {
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 120, height: 120))
-        label.text = profileName
-        label.textColor = textColor
-        label.font = UIFont.systemFont(ofSize: size, weight: style)
-        return label
+    func setConstraints(){
+        NSLayoutConstraint.activate([
+            profileImage.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 16),
+            profileImage.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor, constant: 16),
+            profileImage.widthAnchor.constraint(equalToConstant: 120),
+            profileImage.heightAnchor.constraint(equalToConstant: 120),
+            button.topAnchor.constraint(equalTo: profileImage.safeAreaLayoutGuide.bottomAnchor, constant: 16),
+            button.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor, constant: 16),
+            button.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor, constant: -16),
+            button.heightAnchor.constraint(equalToConstant: 50),
+            button.widthAnchor.constraint(equalToConstant: 120),
+            profileLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 27),
+            profileLabel.leftAnchor.constraint(equalTo: profileImage.safeAreaLayoutGuide.rightAnchor, constant: 30),
+            statusLabel.bottomAnchor.constraint(equalTo: button.safeAreaLayoutGuide.topAnchor, constant: -34),
+            statusLabel.leftAnchor.constraint(equalTo: profileImage.safeAreaLayoutGuide.rightAnchor, constant: 30),
+            ])
+    }
+    
+    func setSubviews(){
+        self.addSubview(profileImage)
+        self.addSubview(button)
+        self.addSubview(profileLabel)
+        self.addSubview(statusLabel)
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        imageProfile = createImage(#imageLiteral(resourceName: "hipsterDog"))
-        self.addSubview(imageProfile!)
-        imageProfile!.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            imageProfile!.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 16),
-            imageProfile!.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor, constant: 16),
-            imageProfile!.widthAnchor.constraint(equalToConstant: 120),
-            imageProfile!.heightAnchor.constraint(equalToConstant: 120)
-        ])
-        
-        button = createButton()
-        self.addSubview(button!)
-        button!.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            button!.topAnchor.constraint(equalTo: imageProfile!.safeAreaLayoutGuide.bottomAnchor, constant: 16),
-            button!.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor, constant: 16),
-            button!.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor, constant: -16),
-            button!.heightAnchor.constraint(equalToConstant: 50),
-            button!.widthAnchor.constraint(equalToConstant: 120)
-        ])
-        
-        labelProfileName = createLabel("Brutal Dog", color : .black, fontSize : 18, textStyle : .bold)
-        self.addSubview(labelProfileName!)
-        labelProfileName!.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            labelProfileName!.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 27),
-            labelProfileName!.leftAnchor.constraint(equalTo: imageProfile!.safeAreaLayoutGuide.rightAnchor, constant: 30),
-        ])
-        
-        labelStatus = createLabel("Waiting to something...", color : .gray, fontSize : 14, textStyle : .regular)
-        self.addSubview(labelStatus!)
-        labelStatus!.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            labelStatus!.bottomAnchor.constraint(equalTo: button!.safeAreaLayoutGuide.topAnchor, constant: -34),
-            labelStatus!.leftAnchor.constraint(equalTo: imageProfile!.safeAreaLayoutGuide.rightAnchor, constant: 30),
-            ])
-        
-        button!.addTarget(self, action: #selector(buttonPressed), for : UIControlEvents.touchUpInside)
+        setSubviews()
+        setConstraints()
     }
-    
-    @objc func buttonPressed(){
-        print(labelStatus!.text!)
-    }
-    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
 }
