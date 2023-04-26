@@ -52,16 +52,16 @@ class ProfileHeaderView: UIView {
     
     func setConstraints(){
         NSLayoutConstraint.activate([
-            avatarImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 16),
-            avatarImageView.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor, constant: 16),
+            avatarImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
+            avatarImageView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16),
             avatarImageView.widthAnchor.constraint(equalToConstant: 120),
             avatarImageView.heightAnchor.constraint(equalToConstant: 120),
             setStatusButton.topAnchor.constraint(equalTo: avatarImageView.safeAreaLayoutGuide.bottomAnchor, constant: 16),
-            setStatusButton.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor, constant: 16),
-            setStatusButton.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor, constant: -16),
+            setStatusButton.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16),
+            setStatusButton.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -16),
             setStatusButton.heightAnchor.constraint(equalToConstant: 50),
             setStatusButton.widthAnchor.constraint(equalToConstant: 120),
-            fullNameLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 27),
+            fullNameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 27),
             fullNameLabel.leftAnchor.constraint(equalTo: avatarImageView.safeAreaLayoutGuide.rightAnchor, constant: 30),
             statusLabel.bottomAnchor.constraint(equalTo: setStatusButton.safeAreaLayoutGuide.topAnchor, constant: -34),
             statusLabel.leftAnchor.constraint(equalTo: avatarImageView.safeAreaLayoutGuide.rightAnchor, constant: 30),
@@ -69,10 +69,10 @@ class ProfileHeaderView: UIView {
     }
     
     func setSubviews(){
-        self.addSubview(avatarImageView)
-        self.addSubview(setStatusButton)
-        self.addSubview(fullNameLabel)
-        self.addSubview(statusLabel)
+        addSubview(avatarImageView)
+        addSubview(setStatusButton)
+        addSubview(fullNameLabel)
+        addSubview(statusLabel)
     }
     
     override init(frame: CGRect) {
