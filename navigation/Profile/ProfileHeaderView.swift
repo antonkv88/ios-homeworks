@@ -46,6 +46,7 @@ class ProfileHeaderView: UIView {
         return button
     }()
     
+    
     @objc func buttonPressed(){
         print(statusLabel.text!)
     }
