@@ -2,12 +2,7 @@ import UIKit
 
 class ProfileHeaderView: UIView {
     
-    lazy var profileImage = uiImage
-    lazy var button = uiButton
-    lazy var profileLabel = uiLabelProfile
-    lazy var statusLabel = uiLabelStatus
-    
-    var uiImage : UIImageView {
+    let avatarImageView : UIImageView = {
         let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 120, height: 120))
         image.image = #imageLiteral(resourceName: "hipsterDog")
         image.layer.borderWidth = 3
@@ -16,27 +11,27 @@ class ProfileHeaderView: UIView {
         image.layer.cornerRadius = image.frame.height/2
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
-    }
+    }()
     
-    var uiLabelProfile : UILabel {
+    let fullNameLabel : UILabel = {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 120, height: 120))
         label.text = "Hipster Dog"
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
-    }
+    }()
     
-    var uiLabelStatus : UILabel {
+    let statusLabel : UILabel = {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 120, height: 120))
         label.text = "Waiting to something..."
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
-    }
+    }()
     
-    var uiButton : UIButton {
+    let setStatusButton : UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
         button.backgroundColor = .blue
         button.setTitle("Show status", for: .normal)
@@ -49,7 +44,7 @@ class ProfileHeaderView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(buttonPressed), for : UIControlEvents.touchUpInside)
         return button
-    }
+    }()
     
     @objc func buttonPressed(){
         print(statusLabel.text!)
@@ -57,26 +52,26 @@ class ProfileHeaderView: UIView {
     
     func setConstraints(){
         NSLayoutConstraint.activate([
-            profileImage.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 16),
-            profileImage.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor, constant: 16),
-            profileImage.widthAnchor.constraint(equalToConstant: 120),
-            profileImage.heightAnchor.constraint(equalToConstant: 120),
-            button.topAnchor.constraint(equalTo: profileImage.safeAreaLayoutGuide.bottomAnchor, constant: 16),
-            button.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor, constant: 16),
-            button.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor, constant: -16),
-            button.heightAnchor.constraint(equalToConstant: 50),
-            button.widthAnchor.constraint(equalToConstant: 120),
-            profileLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 27),
-            profileLabel.leftAnchor.constraint(equalTo: profileImage.safeAreaLayoutGuide.rightAnchor, constant: 30),
-            statusLabel.bottomAnchor.constraint(equalTo: button.safeAreaLayoutGuide.topAnchor, constant: -34),
-            statusLabel.leftAnchor.constraint(equalTo: profileImage.safeAreaLayoutGuide.rightAnchor, constant: 30),
+            avatarImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 16),
+            avatarImageView.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor, constant: 16),
+            avatarImageView.widthAnchor.constraint(equalToConstant: 120),
+            avatarImageView.heightAnchor.constraint(equalToConstant: 120),
+            setStatusButton.topAnchor.constraint(equalTo: avatarImageView.safeAreaLayoutGuide.bottomAnchor, constant: 16),
+            setStatusButton.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor, constant: 16),
+            setStatusButton.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor, constant: -16),
+            setStatusButton.heightAnchor.constraint(equalToConstant: 50),
+            setStatusButton.widthAnchor.constraint(equalToConstant: 120),
+            fullNameLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 27),
+            fullNameLabel.leftAnchor.constraint(equalTo: avatarImageView.safeAreaLayoutGuide.rightAnchor, constant: 30),
+            statusLabel.bottomAnchor.constraint(equalTo: setStatusButton.safeAreaLayoutGuide.topAnchor, constant: -34),
+            statusLabel.leftAnchor.constraint(equalTo: avatarImageView.safeAreaLayoutGuide.rightAnchor, constant: 30),
             ])
     }
     
     func setSubviews(){
-        self.addSubview(profileImage)
-        self.addSubview(button)
-        self.addSubview(profileLabel)
+        self.addSubview(avatarImageView)
+        self.addSubview(setStatusButton)
+        self.addSubview(fullNameLabel)
         self.addSubview(statusLabel)
     }
     
